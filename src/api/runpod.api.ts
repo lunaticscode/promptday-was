@@ -16,4 +16,4 @@ const runpodConnectionPool = new Pool(
   runpodConnectionPoolOptions
 );
 
-export { RUNPOD_SERVERLESS_BASE_URL };
+export { runpodConnectionPool };
