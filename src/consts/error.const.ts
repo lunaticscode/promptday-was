@@ -1,4 +1,9 @@
-type ErrorCodes = "UNKNOWN_ERROR" | "FAIL_TO_CONNECT_DB";
+type ErrorCodes =
+  | "UNKNOWN_ERROR"
+  | "FAIL_TO_CONNECT_DB"
+  | "BAD_REQUEST"
+  | "RUNPOD_ERROR"
+  | "INVALID_USER_AGENT";
 
 const ERROR_CODES: Record<ErrorCodes, { statusCode: number }> = {
   UNKNOWN_ERROR: {
@@ -6,6 +11,15 @@ const ERROR_CODES: Record<ErrorCodes, { statusCode: number }> = {
   },
   FAIL_TO_CONNECT_DB: {
     statusCode: 500,
+  },
+  BAD_REQUEST: {
+    statusCode: 401,
+  },
+  RUNPOD_ERROR: {
+    statusCode: 500,
+  },
+  INVALID_USER_AGENT: {
+    statusCode: 403,
   },
 };
 
@@ -29,7 +43,7 @@ export class AppError extends Error {
     this.from = from ?? getErrorOriginFromStack(this.stack) ?? "unknown";
     const timestamp = new Date().getTime();
     this.timestamp = timestamp;
-    const errorMessage = `❌ Error, [🕔  ${timestamp}] from: ${from}\nstatus: ${statusCode} | ${message}`;
+    const errorMessage = `❌ Error\n[Time]: ${timestamp}\n[From]: ${this.from}\n[Status]: ${statusCode}\n[Message]: ${message}`;
     console.error(errorMessage); // 추후 file-system으로 핸들링
   }
   // 외부로 내보낼 error 정보만,

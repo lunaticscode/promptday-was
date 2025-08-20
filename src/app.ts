@@ -4,6 +4,7 @@ import compression from "compression";
 import { APP_PORT } from "./consts/app.const";
 import errorMiddleware from "./middlewares/error.middleware";
 import apiRouter from "./routes/index.route";
+
 const rateLiimter = rateLimit({
   windowMs: 60 * 1000,
   limit: 30, // each IP to 30 requests per 1 min
