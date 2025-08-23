@@ -1,5 +1,4 @@
 import express from "express";
-import { hostname } from "node:os";
 import { rateLimit } from "express-rate-limit";
 import compression from "compression";
 import { APP_PORT } from "./consts/app.const";
