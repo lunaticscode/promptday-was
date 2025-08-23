@@ -16,7 +16,8 @@
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "express-rate-limit": "^8.0.1",
-    "undici": "^7.13.0"
+    "undici": "^7.13.0",
+    "zod": "^4.1.0"
   },
   "devDependencies": {
     "@types/compression": "^1.8.1",

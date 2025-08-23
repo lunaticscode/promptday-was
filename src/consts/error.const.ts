@@ -3,7 +3,8 @@ type ErrorCodes =
   | "FAIL_TO_CONNECT_DB"
   | "BAD_REQUEST"
   | "RUNPOD_ERROR"
-  | "INVALID_USER_AGENT";
+  | "INVALID_USER_AGENT"
+  | "INVALID_USER_TOKEN";
 
 const ERROR_CODES: Record<ErrorCodes, { statusCode: number }> = {
   UNKNOWN_ERROR: {
@@ -20,6 +21,9 @@ const ERROR_CODES: Record<ErrorCodes, { statusCode: number }> = {
   },
   INVALID_USER_AGENT: {
     statusCode: 403,
+  },
+  INVALID_USER_TOKEN: {
+    statusCode: 401,
   },
 };
 

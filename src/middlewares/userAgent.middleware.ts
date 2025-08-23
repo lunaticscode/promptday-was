@@ -6,6 +6,7 @@ type UserAgentPreventModes =
   | "strict-bot"
   | "aggressive-bot"
   | "social-preview"
+  | "api-test-tools"
   | "all-bots";
 
 /**
@@ -60,6 +61,9 @@ const SOCIAL_PREVIEWS = [
   "facebot",
 ];
 
+/**
+ * @description API 테스팅 툴(e.g., Postman)
+ */
 const API_TEST_TOOLS = [
   "PostmanRuntime",
   "insomnia",
@@ -73,6 +77,7 @@ const mapPreventLevelToBotList: Record<UserAgentPreventModes, string[]> = {
   "strict-bot": STRICT_BOTS,
   "aggressive-bot": AGGRESSIVE_BOTS,
   "social-preview": SOCIAL_PREVIEWS,
+  "api-test-tools": API_TEST_TOOLS,
   "all-bots": [...AGGRESSIVE_BOTS, ...SOCIAL_PREVIEWS, ...API_TEST_TOOLS],
 };
 
