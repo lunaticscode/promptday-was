@@ -9,7 +9,8 @@ import { terser } from "rollup-plugin-terser";
 
 const getPackageJson = () => {
   try {
-    return JSON.parse(readFileSync(path.resolve("package.json"), "utf-8"));
+    return JSON.parse(readFileSync(path.resolve("package.json"), "utf-8"))
+      .dependencies;
   } catch (err) {
     console.error("Occured error from 'getPacakgeJson'\n", err);
     process.exit(1);
@@ -21,7 +22,7 @@ const externals = [
   ...builtinModules.map((m) => `node:${m}`),
   ...Object.keys(getPackageJson() || {}),
 ];
-
+externals.forEach((e) => console.log(e));
 export default {
   input: "build/app.js",
   external: (id) =>
